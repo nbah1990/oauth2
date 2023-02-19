@@ -1,0 +1,24 @@
+version: '3.5'
+
+services:
+  app:
+    build:
+      context: .
+      target: "build"
+    environment:
+      EXECUTE_MIGRATIONS: ${EXECUTE_MIGRATIONS:-true}
+    volumes:
+      - ./:/app
+    working_dir: "/app"
+    ports:
+      - "8096:8096"
+    command: [ "/bin/sh", "-ec", "while :; do echo '.'; sleep 5 ; done" ]
+    tty: true
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: oauth2
+      MYSQL_ROOT_PASSWORD: secret
+    ports:
+      - "33060:3306"
