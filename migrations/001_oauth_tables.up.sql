@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `oauth_clients`
     `name`                   varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
     `secret`                 varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
     `scopes`                 text COLLATE utf8mb4_unicode_ci,
-    `redirect`               text COLLATE utf8mb4_unicode_ci         NOT NULL DEFAULT '',
+    `redirect`               text COLLATE utf8mb4_unicode_ci         NULL DEFAULT NULL,
     `personal_access_client` tinyint(1)                              NOT NULL DEFAULT 0,
     `password_client`        tinyint(1)                              NOT NULL DEFAULT 1,
     `revoked`                tinyint(1)                              NOT NULL DEFAULT 0,
